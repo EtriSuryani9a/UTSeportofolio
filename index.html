@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Portfolio | Etri Suryani</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #12233f;
+      --blue: #2f6fed;
+      --blue-light: #eaf2ff;
+      --text: #26354d;
+      --muted: #718096;
+      --bg: #f7f9fc;
+      --white: #ffffff;
+      --border: #e6ebf2;
+      --shadow: 0 15px 45px rgba(18, 35, 63, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    /* NAVBAR */
+    header {
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--blue);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .nav-button {
+      background: var(--navy);
+      color: white !important;
+      padding: 10px 18px;
+      border-radius: 8px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 90px 0 80px;
+      background: linear-gradient(135deg, #eef5ff 0%, #ffffff 55%, #f5f8ff 100%);
+      overflow: hidden;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(42px, 5vw, 68px);
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+
+    .hero h1 span {
+      color: var(--blue);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 540px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 22px;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: white;
+      box-shadow: 0 8px 20px rgba(47,111,237,0.2);
+    }
+
+    .btn-primary:hover {
+      background: #1f5bd0;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid #cbd6e5;
+      color: var(--navy);
+      background: white;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    .hero-image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image::before {
+      content: "";
+      position: absolute;
+      width: 310px;
+      height: 310px;
+      background: #dceaff;
+      border-radius: 50%;
+      z-index: 0;
+      top: 30px;
+    }
+
+    .profile-photo {
+      width: 300px;
+      height: 370px;
+      object-fit: cover;
+      border-radius: 150px 150px 20px 20px;
+      position: relative;
+      z-index: 1;
+      box-shadow: var(--shadow);
+      border: 8px solid white;
+      background: #eaf2ff;
+    }
+
+    .floating-card {
+      position: absolute;
+      z-index: 2;
+      bottom: 25px;
+      left: 0;
+      background: white;
+      padding: 16px 20px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .floating-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--blue-light);
+      color: var(--blue);
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+    }
+
+    .floating-card strong {
+      display: block;
+      color: var(--navy);
+      font-size: 14px;
+    }
+
+    .floating-card small {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* SECTION */
+    section {
+      padding: 90px 0;
+      scroll-margin-top: 76px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(30px, 4vw, 44px);
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 15px;
+    }
+
+    .section-heading p {
+      max-width: 620px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-image {
+      background: var(--blue-light);
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .about-image img {
+      width: 100%;
+      max-width: 340px;
+      height: 390px;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 12px 30px rgba(18,35,63,0.1);
+    }
+
+    .about-text h3 {
+      font-family: "Playfair Display", serif;
+      color: var(--navy);
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 17px;
+      text-align: justify;
+    }
+
+    .quote {
+      border-left: 4px solid var(--blue);
+      background: #f1f6ff;
+      padding: 20px 24px;
+      margin-top: 25px;
+      border-radius: 0 12px 12px 0;
+      color: var(--navy);
+      font-family: "Playfair Display", serif;
+      font-size: 17px;
+      font-style: italic;
+    }
+
+    .quote small {
+      display: block;
+      margin-top: 10px;
+      font-family: "DM Sans", sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      color: var(--blue);
+    }
+
+    /* ANALYSIS */
+    #analisis {
+      background: white;
+    }
+
+    .analysis-intro {
+      max-width: 720px;
+      margin: -25px auto 45px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .analysis-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      transition: 0.3s;
+      box-shadow: 0 5px 20px rgba(18,35,63,0.03);
+    }
+
+    .analysis-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+      border-color: #c9daf7;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--blue-light);
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      font-size: 24px;
+    }
+
+    .card-number {
+      color: #b9c5d6;
+      font-size: 30px;
+      font-weight: 700;
+    }
+
+    .analysis-card h3 {
+      color: var(--navy);
+      font-size: 18px;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .analysis-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 25px;
+      flex-grow: 1;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+    }
+
+    .card-link:hover {
+      color: var(--navy);
+    }
+
+    /* UTS */
+    #uts {
+      background: #f7f9fc;
+    }
+
+    .uts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .uts-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 8px 28px rgba(18,35,63,0.05);
+    }
+
+    .uts-card h3 {
+      color: var(--navy);
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .uts-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .uts-frame {
+      width: 100%;
+      height: 620px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #f7f9fc;
+    }
+
+    .uts-video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+      border-radius: 12px;
+      background: #0d1b31;
+    }
+
+    .uts-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .uts-note {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: var(--blue-light);
+      color: var(--navy);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .uts-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .uts-frame {
+        height: 560px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .uts-frame {
+        height: 500px;
+      }
+    }
+
+    /* REFLECTION */
+    .reflection-box {
+      background: var(--navy);
+      border-radius: 24px;
+      padding: 65px;
+      color: white;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reflection-box::after {
+      content: "“";
+      position: absolute;
+      font-family: Georgia, serif;
+      font-size: 280px;
+      color: rgba(255,255,255,0.04);
+      right: 20px;
+      top: -70px;
+    }
+
+    .reflection-box .section-label {
+      color: #8db7ff;
+    }
+
+    .reflection-box h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 38px;
+      line-height: 1.3;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .reflection-box p {
+      color: #b8c8df;
+      font-size: 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .reflection-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .reflection-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .reflection-item {
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+    }
+
+    .reflection-item .check {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: rgba(141,183,255,0.15);
+      color: #8db7ff;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+    }
+
+    .reflection-item strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .reflection-item span {
+      color: #b8c8df;
+      font-size: 13px;
+    }
+
+    .reflection-button {
+      margin-top: 30px;
+      background: white;
+      color: var(--navy);
+      position: relative;
+      z-index: 2;
+    }
+
+    .reflection-button:hover {
+      background: #eaf2ff;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0d1b31;
+      color: white;
+      padding: 35px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .footer-logo span {
+      color: #8db7ff;
+    }
+
+    .footer-content p {
+      color: #91a2bb;
+      font-size: 13px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+
+    .footer-social a {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #31425b;
+      border-radius: 50%;
+      color: #b8c8df;
+      font-size: 13px;
+      transition: 0.3s;
+    }
+
+    .footer-social a:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: white;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 45px;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-image {
+        order: -1;
+      }
+
+      .profile-photo {
+        width: 250px;
+        height: 310px;
+      }
+
+      .hero-image::before {
+        width: 260px;
+        height: 260px;
+      }
+
+      .floating-card {
+        left: calc(50% - 180px);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .about-image {
+        max-width: 450px;
+        margin: auto;
+        width: 100%;
+      }
+
+      .about-text h3 {
+        text-align: center;
+      }
+
+      .analysis-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .reflection-box {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding: 45px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        height: auto;
+        min-height: 70px;
+        padding: 15px 0;
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+
+      .nav-button {
+        padding: 8px 13px;
+      }
+
+      .hero {
+        padding: 55px 0 65px;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .profile-photo {
+        width: 220px;
+        height: 275px;
+      }
+
+      .hero-image::before {
+        width: 230px;
+        height: 230px;
+        top: 20px;
+      }
+
+      .floating-card {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 15px;
+        white-space: nowrap;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .section-heading {
+        margin-bottom: 35px;
+      }
+
+      .about-image img {
+        height: 330px;
+      }
+
+      .about-text p {
+        text-align: left;
+      }
+
+      .analysis-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reflection-box {
+        padding: 30px 24px;
+        border-radius: 18px;
+      }
+
+      .reflection-box h2 {
+        font-size: 30px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="container navbar">
+      <a href="#beranda" class="logo">Etri<span>.</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#profil">Profil</a></li>
+        <li><a href="#analisis">Analisis</a></li>
+        <li><a href="#uts">UTS</a></li>
+        <li><a href="#refleksi">Refleksi</a></li>
+        <li>
+          <a href="#analisis" class="nav-button">Lihat Portofolio ↗</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO / BERANDA -->
+  <main id="beranda">
+    <section class="hero">
+      <div class="container hero-content">
+
+        <div class="hero-text">
+          <div class="eyebrow">E-Portfolio Guru · PPG Calon Guru</div>
+
+          <h1>
+            Hai, nama saya <span>Etri.</span><br>
+            Saya calon guru informatika.
+          </h1>
+
+          <p>
+            Selamat datang di ruang portofolio saya. Di sini saya
+            mendokumentasikan perjalanan belajar, praktik mengajar,
+            karya pembelajaran, dan refleksi untuk terus bertumbuh
+            sebagai pendidik.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#profil" class="btn btn-primary">
+              Kenali Saya <span>→</span>
+            </a>
+
+            <a href="#analisis" class="btn btn-outline">
+              Jelajahi Karya
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <img
+            class="profile-photo"
+            src="https://drive.google.com/thumbnail?id=1cAUOuOLNM4xa8b032EeKPF0zlW7Gw50-&sz=w800"
+            alt="Foto profil Etri Suryani"
+          >
+
+          <div class="floating-card">
+            <div class="floating-icon">✦</div>
+            <div>
+              <strong>Belajar · Berkarya · Bertumbuh</strong>
+              <small>Portofolio Praktik Mengajar Mandiri</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 1: PROFIL -->
+    <section id="profil">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-label">01 · Tentang Saya</div>
+          <h2>Mengenal lebih dekat</h2>
+          <p>
+            Sebuah perjalanan dari Gunungkidul menuju dunia pendidikan
+            dengan semangat untuk terus belajar dan berbagi.
+          </p>
+        </div>
+
+        <div class="about-grid">
+
+          <div class="about-image">
+            <img
+              src="https://drive.google.com/thumbnail?id=1cAUOuOLNM4xa8b032EeKPF0zlW7Gw50-&sz=w800"
+              alt="Etri Suryani"
+            >
+          </div>
+
+          <div class="about-text">
+            <h3>Perkenalkan, saya Etri Suryani.</h3>
+
+            <p>
+              Saya berasal dari Kabupaten Gunungkidul, Daerah Istimewa
+              Yogyakarta. Gunungkidul merupakan daerah yang memiliki
+              keunikan berupa bentang alam karst yang luas, deretan
+              pantai yang indah, serta kekayaan budaya yang masih
+              terjaga hingga saat ini. Selain dikenal sebagai daerah
+              wisata, masyarakat Gunungkidul juga dikenal memiliki
+              semangat gotong royong, kerja keras, dan pantang menyerah
+              dalam menghadapi berbagai tantangan kehidupan.
+            </p>
+
+            <p>
+              Latar belakang kehidupan di daerah yang terus berkembang
+              mendorong saya untuk menyadari pentingnya pendidikan
+              sebagai sarana untuk meningkatkan kualitas hidup masyarakat.
+              Inspirasi menjadi guru juga muncul dari pengalaman saya
+              dalam dunia pendidikan, di mana saya melihat bahwa setiap
+              peserta didik memiliki karakteristik, kebutuhan, dan cara
+              belajar yang berbeda.
+            </p>
+
+            <p>
+              Hal tersebut memotivasi saya untuk terus belajar dan
+              mengembangkan kompetensi sebagai pendidik agar mampu
+              menciptakan pembelajaran yang bermakna, inovatif, dan
+              berpusat pada peserta didik.
+            </p>
+
+            <div class="quote">
+              “Pendidikan adalah tuntunan dalam hidup tumbuhnya
+              anak-anak; maksudnya, pendidikan menuntun segala kekuatan
+              kodrat yang ada pada anak-anak agar mereka sebagai manusia
+              dan sebagai anggota masyarakat dapat mencapai keselamatan
+              dan kebahagiaan yang setinggi-tingginya.”
+              <small>— Ki Hadjar Dewantara</small>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: ANALISIS -->
+    <section id="analisis">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-label">02 · Dokumentasi Pembelajaran</div>
+          <h2>Analisis Praktik Mengajar Mandiri</h2>
+          <p>
+            Kumpulan produk pembelajaran, dokumen pendukung, dan
+            analisis pengalaman praktik mengajar mandiri.
+          </p>
+        </div>
+
+        <p class="analysis-intro">
+          Setiap bagian berisi dokumen yang telah disusun dan
+          dianalisis sebagai bagian dari proses pengembangan
+          kompetensi profesional guru.
+        </p>
+
+        <div class="analysis-grid">
+
+          <!-- A -->
+          <div class="analysis-card">
+            <div class="card-top">
+              <div class="card-icon">▣</div>
+              <div class="card-number">A</div>
+            </div>
+
+            <h3>Analisis Rancangan / Perencanaan Pembelajaran</h3>
+
+            <p>
+              Analisis terhadap produk rancangan atau perencanaan
+              pembelajaran yang digunakan dalam praktik mengajar mandiri,
+              meliputi kesesuaian tujuan, kegiatan, asesmen, dan
+              kebutuhan peserta didik.
+            </p>
+
+            <a
+              href="https://docs.google.com/document/d/1_7JUa7UBOCQaOvehz1SAVh7dPjPLWcyb/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="card-link"
+            >
+              Buka Analisis <span>↗</span>
+            </a>
+          </div>
+
+          <!-- B -->
+          <div class="analysis-card">
+            <div class="card-top">
+              <div class="card-icon">▤</div>
+              <div class="card-number">B</div>
+            </div>
+
+            <h3>Analisis Materi Pembelajaran</h3>
+
+            <p>
+              Analisis materi pembelajaran yang telah disusun dan
+              diterapkan dalam praktik mengajar mandiri, ditinjau dari
+              ketepatan isi, keterpahaman, relevansi, dan dukungannya
+              terhadap pencapaian tujuan pembelajaran.
+            </p>
+
+            <a
+              href="https://docs.google.com/document/d/1AW4hciBVrdiZxqvktDbmJH8Uky_86Gmu/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="card-link"
+            >
+              Buka Analisis <span>↗</span>
+            </a>
+          </div>
+
+          <!-- C -->
+          <div class="analysis-card">
+            <div class="card-top">
+              <div class="card-icon">▧</div>
+              <div class="card-number">C</div>
+            </div>
+
+            <h3>Analisis Media Pembelajaran</h3>
+
+            <p>
+              Analisis media pembelajaran yang digunakan selama praktik
+              mengajar mandiri, meliputi fungsi, kesesuaian dengan
+              materi, keterlibatan peserta didik, serta kelebihan dan
+              keterbatasannya.
+            </p>
+
+            <a
+              href="https://docs.google.com/document/d/1Ko1BUYVfJ_3pJRa6iWWdItnaBwAEpW1A/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="card-link"
+            >
+              Buka Analisis <span>↗</span>
+            </a>
+          </div>
+
+          <!-- D -->
+          <div class="analysis-card">
+            <div class="card-top">
+              <div class="card-icon">▶</div>
+              <div class="card-number">D</div>
+            </div>
+
+            <h3>Analisis Video Pelaksanaan Praktik Mengajar</h3>
+
+            <p>
+              Analisis pelaksanaan praktik mengajar mandiri berdasarkan
+              video, meliputi pembukaan, penyampaian materi, interaksi,
+              pengelolaan kelas, asesmen, dan refleksi terhadap proses
+              pembelajaran.
+            </p>
+
+            <a
+              href="https://drive.google.com/file/d/1fxRycrMlkYG6znGu_bX6DkjIvJ87svWh/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="card-link"
+            >
+              Lihat Video / Analisis <span>↗</span>
+            </a>
+          </div>
+
+          <!-- E -->
+          <div class="analysis-card">
+            <div class="card-top">
+              <div class="card-icon">♧</div>
+              <div class="card-number">E</div>
+            </div>
+
+            <h3>Analisis Kegiatan Nonmengajar</h3>
+
+            <p>
+              Dokumentasi dan analisis kegiatan nonmengajar yang
+              dilakukan selama praktik, serta kontribusinya terhadap
+              pengembangan kompetensi, tanggung jawab, dan pengalaman
+              profesional sebagai calon guru.
+            </p>
+
+            <a
+              href="https://docs.google.com/document/d/1RKjSJ0eKVkZ8plx1FhYCE167Pu9ThgM2/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="card-link"
+            >
+              Buka Analisis <span>↗</span>
+            </a>
+          </div>
+
+          <!-- F -->
+          <div class="analysis-card">
+            <div class="card-top">
+              <div class="card-icon">✓</div>
+              <div class="card-number">F</div>
+            </div>
+
+            <h3>Instrumen Penilaian dan Analisisnya</h3>
+
+            <p>
+              Instrumen penilaian yang dirancang beserta analisisnya,
+              meliputi kesesuaian dengan tujuan pembelajaran, aspek
+              yang diukur, kelebihan, kekurangan, dan tindak lanjut
+              penggunaannya.
+            </p>
+
+            <a
+              href="https://docs.google.com/document/d/11J2oRPyWEMg0Fmh6gMfq3pE85W1On_YD/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="card-link"
+            >
+              Buka Analisis <span>↗</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: UTS -->
+    <section id="uts">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-label">03 · UTS</div>
+          <h2>RPP dan Video Pembelajaran</h2>
+          <p>
+            Ruang dokumentasi UTS yang memuat RPP pembelajaran dan
+            video pembelajaran sebagai bagian dari portofolio praktik mengajar.
+          </p>
+        </div>
+
+        <div class="uts-grid">
+
+          <div class="uts-card">
+            <h3>📘 RPP UTS</h3>
+            <p>
+              Dokumen RPP yang digunakan sebagai perangkat perencanaan
+              pembelajaran untuk kegiatan UTS.
+            </p>
+
+            <iframe
+              class="uts-frame"
+              src="https://docs.google.com/document/d/1Gv1dz3Fo_630aWvQGw3T2FoChJcyiOdh/preview"
+              title="RPP UTS Etri Suryani"
+              loading="lazy">
+            </iframe>
+
+            <div class="uts-actions">
+              <a
+                href="https://docs.google.com/document/d/1Gv1dz3Fo_630aWvQGw3T2FoChJcyiOdh/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary">
+                Buka RPP ↗
+              </a>
+            </div>
+
+            <div class="uts-note">
+              Jika RPP tidak tampil di dalam halaman, klik <strong>Buka RPP</strong>
+              untuk membukanya langsung di Google Docs.
+            </div>
+          </div>
+
+          <div class="uts-card">
+            <h3>🎥 Video Pembelajaran</h3>
+            <p>
+              Video pembelajaran yang digunakan sebagai dokumentasi
+              pelaksanaan kegiatan pembelajaran.
+            </p>
+
+            <iframe
+              class="uts-video"
+              src="https://drive.google.com/file/d/1t5SDfUIrf_Lk0PsQgMFszLhorhP_BneQ/preview"
+              title="Video Pembelajaran UTS"
+              allow="autoplay; fullscreen"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+
+            <div class="uts-actions">
+              <a
+                href="https://drive.google.com/file/d/1t5SDfUIrf_Lk0PsQgMFszLhorhP_BneQ/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary">
+                Buka Video ↗
+              </a>
+            </div>
+
+            <div class="uts-note">
+              Pastikan akses file video di Google Drive diatur ke
+              <strong>Siapa saja yang memiliki link</strong> agar dapat ditonton
+              oleh pengunjung e-portfolio.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: REFLEKSI -->
+    <section id="refleksi">
+      <div class="container">
+
+        <div class="reflection-box">
+
+          <div class="reflection-content">
+            <div class="section-label">03 · Refleksi</div>
+
+            <h2>Belajar dari pengalaman, bertumbuh sebagai pendidik.</h2>
+
+            <p>
+              Refleksi menjadi ruang untuk memahami pengalaman praktik
+              mengajar, mengenali tantangan, mengevaluasi pembelajaran,
+              serta merencanakan langkah perbaikan yang berkelanjutan.
+            </p>
+
+            <a
+              href="https://docs.google.com/document/d/1Gh7bX5fkX7tpZsUKIYcO0Y5JeJ2yOC-q/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn reflection-button"
+            >
+              Baca Refleksi Lengkap ↗
+            </a>
+          </div>
+
+          <div class="reflection-list">
+
+            <div class="reflection-item">
+              <div class="check">✓</div>
+              <div>
+                <strong>Pengalaman Praktik Mengajar</strong>
+                <span>Memahami proses pembelajaran dan dinamika kelas.</span>
+              </div>
+            </div>
+
+            <div class="reflection-item">
+              <div class="check">✓</div>
+              <div>
+                <strong>Tantangan dan Pembelajaran</strong>
+                <span>Mengenali hal yang perlu dipertahankan dan diperbaiki.</span>
+              </div>
+            </div>
+
+            <div class="reflection-item">
+              <div class="check">✓</div>
+              <div>
+                <strong>Rencana Tindak Lanjut</strong>
+                <span>Menentukan langkah pengembangan diri sebagai guru.</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-content">
+
+      <div class="footer-logo">Etri<span>.</span></div>
+
+      <p>
+        © 2026 Etri Suryani · E-Portofolio Praktik Mengajar Mandiri
+      </p>
+
+      <div class="footer-social">
+        <a href="#beranda" aria-label="Kembali ke beranda">↑</a>
+        <a href="#profil" aria-label="Profil">✦</a>
+        <a href="#analisis" aria-label="Analisis">▣</a>
+        <a href="#uts" aria-label="UTS">U</a>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
